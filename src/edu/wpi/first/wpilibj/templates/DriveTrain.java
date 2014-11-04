@@ -15,12 +15,14 @@ public abstract class DriveTrain {
     private final SwervePod frontRight;
     private final SwervePod backLeft;
     private final SwervePod backRight;
+    private final OperatorInputs oi;
     
-    public DriveTrain(SwervePod frontLeft, SwervePod frontRight, SwervePod backLeft, SwervePod backRight) {
+    public DriveTrain(SwervePod frontLeft, SwervePod frontRight, SwervePod backLeft, SwervePod backRight, OperatorInputs oi) {
         this.frontLeft = frontLeft;
         this.frontRight = frontRight;
         this.backLeft = backLeft;
         this.backRight = backRight;
+        this.oi = oi;
     }
 
     abstract public void drive();
@@ -59,5 +61,12 @@ public abstract class DriveTrain {
 
     public void setBackRightRotator(double pos) {
         backRight.setRotator(pos);
+    }
+    
+    public double joystickMagnitude(){
+        return oi.joystickMagnitude();
+    }
+    public double joystickDirection(){
+        return oi.joystickDirection();
     }
 }

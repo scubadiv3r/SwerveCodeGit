@@ -45,19 +45,22 @@ public class Swervanator extends IterativeRobot {
     private static final SwervePod FRONT_RIGHT = new SwervePod(FRONT_RIGHT_ENCODER, FRONT_RIGHT_WHEEL, FRONT_RIGHT_POT, FRONT_RIGHT_ROTATOR);
     private static final SwervePod BACK_LEFT = new SwervePod(BACK_LEFT_ENCODER, BACK_LEFT_WHEEL, BACK_LEFT_POT, BACK_LEFT_ROTATOR);
     private static final SwervePod BACK_RIGHT = new SwervePod(BACK_RIGHT_ENCODER, BACK_RIGHT_WHEEL, BACK_RIGHT_POT, BACK_RIGHT_ROTATOR);
+    
+    private static final OperatorInputs OPERATOR_INPUTS = new OperatorInputs();
+    private CrabDrive crabDrive;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-        
+        crabDrive = new CrabDrive(FRONT_LEFT,FRONT_RIGHT,BACK_LEFT,BACK_RIGHT,OPERATOR_INPUTS);
     }
 
     /**
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-
+        crabDrive.drive();
     }
 
     /**
