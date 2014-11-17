@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.Encoder;
  */
 public class EncoderPID extends PIDSubsystem {
 
-    private static final double Kp = 0.0;
+    private static final double Kp = 1.0;
     private static final double Ki = 0.0;
     private static final double Kd = 0.0;
     private final SpeedController motor;
