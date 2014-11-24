@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Watchdog;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 
@@ -61,19 +62,19 @@ public class Swervanator extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         crabDrive.drive();
+        Watchdog.getInstance().feed();
     }
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+        Watchdog.getInstance().feed();
     }
 
     /**
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-
     }
-
 }
