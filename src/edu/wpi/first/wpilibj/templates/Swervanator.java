@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+
 public class Swervanator extends IterativeRobot {
 
     private static final Encoder FRONT_LEFT_ENCODER = new Encoder(1,2);
@@ -49,10 +50,12 @@ public class Swervanator extends IterativeRobot {
     
     private static final OperatorInputs OPERATOR_INPUTS = new OperatorInputs();
     private CrabDrive crabDrive;
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
+    
     public void robotInit() {
         crabDrive = new CrabDrive(FRONT_LEFT,FRONT_RIGHT,BACK_LEFT,BACK_RIGHT,OPERATOR_INPUTS);
     }
@@ -60,6 +63,7 @@ public class Swervanator extends IterativeRobot {
     /**
      * This function is called periodically during autonomous
      */
+    
     public void autonomousPeriodic() {
         crabDrive.drive();
         Watchdog.getInstance().feed();
@@ -68,6 +72,7 @@ public class Swervanator extends IterativeRobot {
     /**
      * This function is called periodically during operator control
      */
+    
     public void teleopPeriodic() {
         Watchdog.getInstance().feed();
     }
@@ -75,6 +80,7 @@ public class Swervanator extends IterativeRobot {
     /**
      * This function is called periodically during test mode
      */
+    
     public void testPeriodic() {
     }
 }
