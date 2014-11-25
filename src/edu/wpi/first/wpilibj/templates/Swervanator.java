@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Watchdog;
 
-import edu.wpi.first.wpilibj.SimpleRobot;
+import edu.wpi.first.wpilibj.IterativeRobot;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.SimpleRobot;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Swervanator extends SimpleRobot {
+public class Swervanator extends IterativeRobot {
 
     private static final Encoder FRONT_LEFT_ENCODER = new Encoder(1, 2);
     private static final Encoder FRONT_RIGHT_ENCODER = new Encoder(3, 4);
@@ -49,8 +49,7 @@ public class Swervanator extends SimpleRobot {
 
     private static final OperatorInputs OPERATOR_INPUTS = new OperatorInputs();
     private CrabDrive crabDrive;
-    private Watchdog watchdog;
-
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -61,13 +60,12 @@ public class Swervanator extends SimpleRobot {
     }
 
     public void disabledPeriodic() {
-        System.out.println("Watchdog Feed");
     }
 
     /**
      * This function is called periodically during autonomous
      */
-    public void autonomous() {
+    public void autonomousPeriodic() {
         FRONT_LEFT_WHEEL.set(1);
     }
 
@@ -75,12 +73,12 @@ public class Swervanator extends SimpleRobot {
      * This function is called periodically during operator control
      */
     public void teleopInit() {
-        System.out.println("Robot Initilizing");
+        System.out.println("Initilizing Human Operated Mode");
         crabDrive = new CrabDrive(FRONT_LEFT, FRONT_RIGHT, BACK_LEFT, BACK_RIGHT, OPERATOR_INPUTS);
-        System.out.println("Robot Initilized");
+        System.out.println("Teleop Initilized");
     }
 
-    public void operatorControl() {
+    public void teleopPeriodic() {
         crabDrive.drive();
     }
 
