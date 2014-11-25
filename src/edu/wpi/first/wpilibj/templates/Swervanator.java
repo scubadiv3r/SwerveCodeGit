@@ -73,6 +73,7 @@ public class Swervanator extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopInit() {
+        Watchdog.getInstance().setEnabled(false);
         System.out.println("Initilizing Human Operated Mode");
         crabDrive = new CrabDrive(FRONT_LEFT, FRONT_RIGHT, BACK_LEFT, BACK_RIGHT, OPERATOR_INPUTS);
         System.out.println("Teleop Initilized");
